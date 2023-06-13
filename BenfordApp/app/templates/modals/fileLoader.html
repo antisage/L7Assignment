@@ -1,0 +1,87 @@
+<div
+  class="modal fade" id="file-load"
+  data-keyboard="false"
+  aria-labelledby="fileLoader"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header shadow-sm">
+        <h3>
+          Select File
+        </h3>
+        <a
+          href="#"
+          type="button"
+          class="close text-white border-0"
+          data-dismiss="modal"
+          aria-label="Close">
+          <span
+            aria-hidden="true">
+            &times;
+          </span>
+        </a>
+      </div>
+
+      <div class="modal-body">
+
+        <input
+          class="border-0 form-control text-dark text-muted pt-1"
+          @change="loadPreview"
+          type="file"
+          accept=".csv"
+          id="csv-file-input"
+          v-model="inputFilename">
+        <hr>
+
+        <div
+          class="no-preview-msg text-center"
+          v-if="csvPreviewHeaders.length == 0">
+          <h5 class="text-muted">No Preview</h5>
+        </div>
+
+        <div
+          class="csv-preview"
+          v-if="csvPreviewHeaders.length > 0">
+        </div>
+
+        <div class="preview-table table-responsive text-nowrap">
+          <table
+            class="table table-sm table-bordered table-striped shadow-sm">
+            <caption></caption>
+            <thead class="text-muted">
+              <tr>
+                <th
+                  v-for="(header, index) in csvPreviewHeaders"
+                  :key="index"
+                  scope="col">[[ header ]]</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class="text-muted"
+                v-for="(row, index) in csvPreviewData"
+                :key="'data-' + index">
+                <td
+                  v-for="element in row">
+                  [[ element ]]
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          @click="loadLocalCsv">
+          Load
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

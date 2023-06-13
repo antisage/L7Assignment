@@ -1,0 +1,24 @@
+<div
+  class="modal fade"
+  id="result"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <figure class="highcharts-figure">
+          <div id="container"></div>
+        </figure>
+        <div class="justify-content-center">
+          This data has a chi squared of [[chisqrOutput]], it [[chisqrOutput < .05 ? 'validates Benford' : 'does not validate Benford']]
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
